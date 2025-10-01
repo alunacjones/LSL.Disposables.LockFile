@@ -4,10 +4,15 @@
 
 # LSL.Disposables.LockFile
 
-Provide package documentation here.
+A disposable lock file for .NET. 
 
-<!-- HIDE -->
-## Further Documentation
+```csharp
+using LSL.Disposables.LockFile;
+...
 
-More in-depth documentation can be found [here](https://alunacjones.github.io/LSL.Disposables.LockFile/)
-<!-- END:HIDE -->
+// The file `file.lock` exists until `lockFile` is disposed
+using var lockFile = new LockFileFactory().Create("file.lock");
+
+// lockFile.WasCreated will be `true` if the lock file does not already exist
+// lockFile.LockFilePath will be `file.lock`
+```
